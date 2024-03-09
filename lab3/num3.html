@@ -30,12 +30,12 @@
     }
 
     function testRotateArray() {
-        var arrayString = document.getElementById("arrayInput").value;
-        var count = parseInt(document.getElementById("countInput").value);
-        var array = arrayString.split(",").map(function(item) {
+        let arrayString = document.getElementById("arrayInput").value;
+        let count = parseInt(document.getElementById("countInput").value);
+        let array = arrayString.split(",").map(function(item) {
             return parseInt(item.trim(), 10);
         });
-        var result = rotateArray(array, count);
+        let result = rotateArray(array, count);
         document.getElementById("result").innerText = "Повернутый массив: " + result;
     }
 </script>

@@ -26,11 +26,10 @@
     }
 
     function testRenderInfoByTemplate() {
-        var city = document.getElementById("cityInput").value;
-        var population = parseInt(document.getElementById("populationInput").value);
-        var area = parseInt(document.getElementById("areaInput").value);
-        var result = renderInfoByTemplate(city, population, area);
-        document.getElementById("result").innerText = result;
+        let city = document.getElementById("cityInput").value;
+        let population = parseInt(document.getElementById("populationInput").value);
+        let area = parseInt(document.getElementById("areaInput").value);
+        document.getElementById("result").innerText = renderInfoByTemplate(city, population, area);
     }
 </script>
 </body>

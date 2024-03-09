@@ -86,13 +86,13 @@ Fast and Furious directedBy Rob Cohen"></textarea>
     }
 
     function testProcess() {
-        var commandsString = document.getElementById("commandInput").value;
-        var commands = commandsString.split("\n");
-        var result = process(commands);
-        var resultDiv = document.getElementById("result");
+        let commandsString = document.getElementById("commandInput").value;
+        let commands = commandsString.split("\n");
+        let result = process(commands);
+        let resultDiv = document.getElementById("result");
         resultDiv.innerHTML = "";
         result.forEach(item => {
-            var p = document.createElement("p");
+            let p = document.createElement("p");
             p.textContent = item;
             resultDiv.appendChild(p);
         });

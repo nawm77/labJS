@@ -35,8 +35,8 @@
     }
 
     function testValueChanger() {
-        var arrayString = document.getElementById("arrayInput").value;
-        var array = arrayString.split(",").map(function(item) {
+        let arrayString = document.getElementById("arrayInput").value;
+        let array = arrayString.split(",").map(function(item) {
             return parseInt(item.trim(), 10);
         });
         valueChanger(array);

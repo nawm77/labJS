@@ -30,7 +30,7 @@
                 map.set(array2[i], Number(array2[i+1]));
             }
         }
-        var result = "";
+        let result = "";
         map.forEach((v, k) => {
             result += `${k} -> ${v}<br>`;
         });
@@ -38,16 +38,15 @@
     }
 
     function testGetSoldItemsCount() {
-        var array1String = document.getElementById("array1Input").value;
-        var array2String = document.getElementById("array2Input").value;
-        var array1 = array1String.split(",").map(function(item) {
+        let array1String = document.getElementById("array1Input").value;
+        let array2String = document.getElementById("array2Input").value;
+        let array1 = array1String.split(",").map(function(item) {
             return item.trim();
         });
-        var array2 = array2String.split(",").map(function(item) {
+        let array2 = array2String.split(",").map(function(item) {
             return item.trim();
         });
-        var result = getSoldItemsCount(array1, array2);
-        document.getElementById("result").innerHTML = result;
+        document.getElementById("result").innerHTML = getSoldItemsCount(array1, array2);
     }
 </script>
 </body>

@@ -43,10 +43,10 @@
     }
 
     function testCalculator() {
-        var num1 = parseFloat(document.getElementById("num1Input").value);
-        var operation = document.getElementById("operationInput").value;
-        var num2 = parseFloat(document.getElementById("num2Input").value);
-        var result = calculator(num1, operation, num2);
+        let num1 = parseFloat(document.getElementById("num1Input").value);
+        let operation = document.getElementById("operationInput").value;
+        let num2 = parseFloat(document.getElementById("num2Input").value);
+        let result = calculator(num1, operation, num2);
         document.getElementById("result").innerText = "Результат: " + result;
     }
 </script>

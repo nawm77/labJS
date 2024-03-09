@@ -23,12 +23,12 @@
     }
 
     function testSubtract() {
-        var arrString = document.getElementById("arrInput").value;
-        var num = parseInt(document.getElementById("numInput").value);
-        var arr = arrString.split(",").map(function(item) {
+        let arrString = document.getElementById("arrInput").value;
+        let num = parseInt(document.getElementById("numInput").value);
+        let arr = arrString.split(",").map(function(item) {
             return parseInt(item.trim(), 10);
         });
-        var result = subtract(arr, num);
+        let result = subtract(arr, num);
         document.getElementById("result").innerText = "Результат: " + result;
     }
 </script>

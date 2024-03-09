@@ -16,7 +16,7 @@
 
 <script>
     function printMatrix(n) {
-        var result = "";
+        let result = "";
         for (let i = 0; i < n; i++) {
             let str = "";
             for (let j = 0; j < n - 1; j++) {
@@ -29,7 +29,7 @@
     }
 
     function testPrintMatrix() {
-        var n = parseInt(document.getElementById("nInput").value);
+        let n = parseInt(document.getElementById("nInput").value);
         printMatrix(n);
     }
 </script>

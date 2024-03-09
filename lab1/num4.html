@@ -57,10 +57,10 @@
     }
 
     function testCalculatePrice() {
-        var count = parseInt(document.getElementById("countInput").value);
-        var type = document.getElementById("typeInput").value;
-        var day = document.getElementById("dayInput").value;
-        var result = calculatePrice(count, type, day);
+        let count = parseInt(document.getElementById("countInput").value);
+        let type = document.getElementById("typeInput").value;
+        let day = document.getElementById("dayInput").value;
+        let result = calculatePrice(count, type, day);
         document.getElementById("result").innerText = "Результат: " + result;
     }
 </script>

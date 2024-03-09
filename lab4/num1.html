@@ -24,12 +24,12 @@
     }
 
     function testFindMin() {
-        var numArrString = document.getElementById("numArrInput").value;
-        var num1 = parseInt(document.getElementById("num1Input").value);
-        var numArr = numArrString.split(",").map(function(item) {
+        let numArrString = document.getElementById("numArrInput").value;
+        let num1 = parseInt(document.getElementById("num1Input").value);
+        let numArr = numArrString.split(",").map(function(item) {
             return parseInt(item.trim(), 10);
         });
-        var result = findMin(numArr, num1);
+        let result = findMin(numArr, num1);
         document.getElementById("result").innerText = "Минимальное число: " + result;
     }
 </script>

@@ -28,15 +28,15 @@
     }
 
     function calculatePersonalNumbers() {
-        var input = document.getElementById("employeeInput").value;
-        var employeesData = input.split("\n");
-        var employees = [];
+        let input = document.getElementById("employeeInput").value;
+        let employeesData = input.split("\n");
+        let employees = [];
 
         employeesData.forEach(function(employeeName) {
             employees.push(new Employee(employeeName));
         });
 
-        var output = document.getElementById("output");
+        let output = document.getElementById("output");
         output.innerHTML = "";
 
         employees.forEach(function(employee) {
