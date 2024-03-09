@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции process</title>
+    <style>
+        #commandInput {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<h1>Тестирование функции process</h1>
+<div>тестовые команды</div>
+<label for="commandInput">Введите команды для обработки (разделитель - новая строка):</label>
+<br>
+<textarea id="commandInput" placeholder="Пример:
+addMovie Fast and Furious
+addMovie Godfather
+Inception directedBy Christopher Nolan
+Godfather directedBy Francis Ford Coppola
+Godfather onDate 29.07.2018
+Fast and Furious onDate 30.07.2018
+Batman onDate 01.08.2018
+Fast and Furious directedBy Rob Cohen"></textarea>
+<br>
+<button onclick="testProcess()">Обработать команды</button>
+<br>
+<div id="result"></div>
+
+<script>
+    const ACTION_ADD = "addMovie";
+    const ACTION_DIRECTED_BY = "directedBy";
+    const ACTION_ON_DATE = "onDate";
+
+    function defineAction(command) {
+        if (command.includes(ACTION_ADD)) {
+            return ACTION_ADD;
+        }
+        if (command.includes(ACTION_DIRECTED_BY)) {
+            return ACTION_DIRECTED_BY;
+        }
+        if (command.includes(ACTION_ON_DATE)) {
+            return ACTION_ON_DATE;
+        }
+    }
+
+    function process(commands) {
+        let list = [];
+        commands.forEach(command => {
+            let commandArray = command.split(" ");
+            let action = defineAction(commandArray);
+            if (action === ACTION_ADD) {
+                let name = commandArray.slice(1).join(" ");
+                let movie = new Movie(name);
+                list.push(movie);
+            }
+            if (action === ACTION_DIRECTED_BY) {
+                let name = commandArray.slice(0, commandArray.indexOf("directedBy")).join(" ").trim();
+                let existingMovie = list.find(movie => movie.name === name);
+                let director = commandArray.slice(commandArray.indexOf("directedBy") + 1).join(" ").trim();
+                if (existingMovie) {
+                    existingMovie.director = director;
+                } else {
+                    let movie = new Movie(name, undefined, director);
+                    list.push(movie);
+                }
+            }
+            if (action === ACTION_ON_DATE) {
+                let name = commandArray.slice(0, commandArray.indexOf("onDate")).join(" ").trim();
+                let existingMovie = list.find(movie => movie.name === name);
+                let date = commandArray[commandArray.length - 1];
+                if (existingMovie) {
+                    existingMovie.date = date;
+                } else {
+                    let movie = new Movie(name, date);
+                    list.push(movie);
+                }
+            }
+        });
+        let result = [];
+        list.filter(m => m.director !== undefined && m.name !== undefined && m.date !== undefined)
+            .forEach(m => result.push(JSON.stringify(m)));
+        return result;
+    }
+
+    function testProcess() {
+        var commandsString = document.getElementById("commandInput").value;
+        var commands = commandsString.split("\n");
+        var result = process(commands);
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = "";
+        result.forEach(item => {
+            var p = document.createElement("p");
+            p.textContent = item;
+            resultDiv.appendChild(p);
+        });
+    }
+
+    class Movie {
+        constructor(name = undefined, date = undefined, director = undefined) {
+            this.name = name;
+            this.date = date;
+            this.director = director;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции progressBar</title>
+</head>
+<body>
+<h1>Тестирование функции progressBar</h1>
+<label for="nInput">Введите процент выполнения (от 0 до 100):</label>
+<input type="number" id="nInput" min="0" max="100">
+<br>
+<button onclick="testProgressBar()">Отобразить прогресс</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function progressBar(n) {
+        let template = "";
+        if (n < 0 || n > 100) {
+            template = "Неверное значение процента выполнения!";
+        } else {
+            template = `${n}% `;
+            if (n === 100) {
+                template += "Complete!<br>";
+                template += "[%%%%%%%%%%]<br>";
+            } else {
+                template += "[";
+                for (let i = 10; i <= 100; i += 10) {
+                    if (i <= n) {
+                        template += "%";
+                    } else {
+                        template += ".";
+                    }
+                }
+                template += "]<br>";
+                template += "Still loading...";
+            }
+        }
+        document.getElementById("result").innerHTML = template;
+    }
+
+    function testProgressBar() {
+        var n = parseInt(document.getElementById("nInput").value);
+        progressBar(n);
+    }
+</script>
+</body>
+</html>

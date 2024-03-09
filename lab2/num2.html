@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции strJoin</title>
+</head>
+<body>
+<h1>Тестирование функции strJoin</h1>
+<label for="str1Input">Введите первую строку:</label>
+<input type="text" id="str1Input">
+<br>
+<label for="str2Input">Введите вторую строку:</label>
+<input type="text" id="str2Input">
+<br>
+<label for="str3Input">Введите третью строку:</label>
+<input type="text" id="str3Input">
+<br>
+<button onclick="testStrJoin()">Объединить строки</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function strJoin(str1, str2, str3) {
+        return str1 + str2 + str3;
+    }
+
+    function testStrJoin() {
+        var str1 = document.getElementById("str1Input").value;
+        var str2 = document.getElementById("str2Input").value;
+        var str3 = document.getElementById("str3Input").value;
+        var result = strJoin(str1, str2, str3);
+        document.getElementById("result").innerText = "Результат объединения: " + result;
+    }
+</script>
+</body>
+</html>

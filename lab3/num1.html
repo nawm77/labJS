@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции valueChanger</title>
+</head>
+<body>
+<h1>Тестирование функции valueChanger</h1>
+<label for="arrayInput">Введите массив чисел через запятую:</label>
+<input type="text" id="arrayInput" placeholder="Пример: 1, 2, 3">
+<br>
+<button onclick="testValueChanger()">Изменить значения</button>
+<br>
+<p id="arrayResult"></p>
+<p id="firstSumResult"></p>
+<p id="secondSumResult"></p>
+
+<script>
+    function valueChanger(array) {
+        let firstSum = 0;
+        let secondSum = 0;
+        for (let i = 0; i < array.length; i++) {
+            firstSum += array[i];
+            if(array[i] % 2 === 0) {
+                array[i] += i;
+            } else {
+                array[i] -= i;
+            }
+            secondSum += array[i];
+        }
+        document.getElementById("arrayResult").innerText = "Массив после изменений: " + array;
+        document.getElementById("firstSumResult").innerText = "Сумма элементов до изменений: " + firstSum;
+        document.getElementById("secondSumResult").innerText = "Сумма элементов после изменений: " + secondSum;
+    }
+
+    function testValueChanger() {
+        var arrayString = document.getElementById("arrayInput").value;
+        var array = arrayString.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+        valueChanger(array);
+    }
+</script>
+</body>
+</html>

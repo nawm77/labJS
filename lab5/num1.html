@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees Personal Numbers</title>
+</head>
+<body>
+
+<h2>Enter Employee Names:</h2>
+<textarea id="employeeInput" rows="4" cols="50"></textarea><br>
+<button onclick="calculatePersonalNumbers()">Calculate Personal Numbers</button>
+
+<h2>Personal Numbers:</h2>
+<div id="output"></div>
+
+<script>
+    // Определяем класс для представления сотрудника
+    class Employee {
+        constructor(name) {
+            this.name = name;
+            this.personalNum = name.length;
+        }
+
+        getInfo() {
+            return `Name: ${this.name} - Personal Number: ${this.personalNum}`;
+        }
+    }
+
+    function calculatePersonalNumbers() {
+        var input = document.getElementById("employeeInput").value;
+        var employeesData = input.split("\n");
+        var employees = [];
+
+        employeesData.forEach(function(employeeName) {
+            employees.push(new Employee(employeeName));
+        });
+
+        var output = document.getElementById("output");
+        output.innerHTML = "";
+
+        employees.forEach(function(employee) {
+            output.innerHTML += employee.getInfo() + "<br>";
+        });
+    }
+</script>
+
+</body>
+</html>

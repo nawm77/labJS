@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции calculatePrice</title>
+</head>
+<body>
+<h1>Тестирование функции calculatePrice</h1>
+<label for="countInput">Количество:</label>
+<input type="number" id="countInput">
+<br>
+<label for="typeInput">Тип:</label>
+<input type="text" id="typeInput">
+<br>
+<label for="dayInput">День:</label>
+<input type="text" id="dayInput">
+<br>
+<button onclick="testCalculatePrice()">Посчитать цену</button>
+<br>
+<p id="result"></p>
+
+<script>
+    const map = new Map([
+        ["Students", new Map([
+            ["Friday", 8.45],
+            ["Saturday", 9.80],
+            ["Sunday", 10.46]
+        ])],
+        ["Corp", new Map([
+            ["Friday", 10.90],
+            ["Saturday", 15.60],
+            ["Sunday", 16]
+        ])],
+        ["Regular", new Map([
+            ["Friday", 15],
+            ["Saturday", 20],
+            ["Sunday", 22.50]
+        ])]
+    ]);
+
+    function calculatePrice(count, type, day) {
+        const typeMap = map.get(type);
+        if (typeMap) {
+            const price = typeMap.get(day);
+            if (price !== undefined) {
+                if (type === "Students" && count >29) return Number((count * price * 0.85).toFixed(2))
+                if (type === "Corp" && count >99) return Number((count * price * 0.9).toFixed(2))
+                if (type === "Regular" && count >9 && count < 21) return Number((count * price * 0.95).toFixed(2))
+                return Number((count * price).toFixed(2));
+            } else {
+                return `Некорректный день: ${day}`;
+            }
+        } else {
+            return `Некорректный тип: ${type}`;
+        }
+    }
+
+    function testCalculatePrice() {
+        var count = parseInt(document.getElementById("countInput").value);
+        var type = document.getElementById("typeInput").value;
+        var day = document.getElementById("dayInput").value;
+        var result = calculatePrice(count, type, day);
+        document.getElementById("result").innerText = "Результат: " + result;
+    }
+</script>
+</body>
+</html>

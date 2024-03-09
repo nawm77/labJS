@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Subtraction</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+<div id="wrapper">
+    <label for="firstNumber"></label><input type="text" id="firstNumber">
+    <label for="secondNumber"></label><input type="text" id="secondNumber">
+
+    <div id="result"></div>
+</div>
+<script src="subtract.js"></script>
+<script>
+    window.onload = function () {
+        subtract();
+        let firstNumberInput = document.getElementById('firstNumber');
+        let secondNumberInput = document.getElementById('secondNumber');
+        firstNumberInput.addEventListener('input', subtract);
+        secondNumberInput.addEventListener('input', subtract);
+    };
+
+    function subtract() {
+        let resultDiv;
+        let firstNumber = parseFloat(document.getElementById('firstNumber').value);
+        let secondNumber = parseFloat(document.getElementById('secondNumber').value);
+        if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+            let result = firstNumber - secondNumber;
+            resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Результат вычитания: ' + result;
+        } else {
+            resultDiv = document.getElementById('result');
+            resultDiv.textContent = 'Ошибка: Введите числовые значения в поля для ввода.';
+        }
+    }
+</script>
+</body>
+
+</html>

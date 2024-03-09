@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции subtract</title>
+</head>
+<body>
+<h1>Тестирование функции subtract</h1>
+<label for="arrInput">Введите массив чисел через запятую:</label>
+<input type="text" id="arrInput" placeholder="Пример: 1, 2">
+<br>
+<label for="numInput">Введите число:</label>
+<input type="number" id="numInput">
+<br>
+<button onclick="testSubtract()">Вычесть число</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function subtract(arr, num) {
+        return arr[0] + arr[1] - num;
+    }
+
+    function testSubtract() {
+        var arrString = document.getElementById("arrInput").value;
+        var num = parseInt(document.getElementById("numInput").value);
+        var arr = arrString.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+        var result = subtract(arr, num);
+        document.getElementById("result").innerText = "Результат: " + result;
+    }
+</script>
+</body>
+</html>

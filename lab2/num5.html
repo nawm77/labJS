@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции fromBinToDec</title>
+</head>
+<body>
+<h1>Тестирование функции fromBinToDec</h1>
+<label for="binaryInput">Введите двоичное число:</label>
+<input type="text" id="binaryInput">
+<br>
+<button onclick="testFromBinToDec()">Преобразовать</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function fromBinToDec(num) {
+        return parseInt(num, 2);
+    }
+
+    function testFromBinToDec() {
+        var binaryNum = document.getElementById("binaryInput").value;
+        var result = fromBinToDec(binaryNum);
+        document.getElementById("result").innerText = "Десятичное число: " + result;
+    }
+</script>
+</body>
+</html>

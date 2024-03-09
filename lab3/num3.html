@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции rotateArray</title>
+</head>
+<body>
+<h1>Тестирование функции rotateArray</h1>
+<label for="arrayInput">Введите массив чисел через запятую:</label>
+<input type="text" id="arrayInput" placeholder="Пример: 1, 2, 3">
+<br>
+<label for="countInput">Введите количество поворотов:</label>
+<input type="number" id="countInput">
+<br>
+<button onclick="testRotateArray()">Повернуть массив</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function rotateArray(array, count) {
+        for (let i = 0; i < count; i++) {
+            let temp = array[0];
+            for (let i = 0; i < array.length - 1; i++) {
+                array[i] = array[i+1];
+            }
+            array[array.length-1] = temp;
+        }
+        return array;
+    }
+
+    function testRotateArray() {
+        var arrayString = document.getElementById("arrayInput").value;
+        var count = parseInt(document.getElementById("countInput").value);
+        var array = arrayString.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+        var result = rotateArray(array, count);
+        document.getElementById("result").innerText = "Повернутый массив: " + result;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции printMatrix</title>
+</head>
+<body>
+<h1>Тестирование функции printMatrix</h1>
+<label for="nInput">Введите размер матрицы (n):</label>
+<input type="number" id="nInput">
+<br>
+<button onclick="testPrintMatrix()">Вывести матрицу</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function printMatrix(n) {
+        var result = "";
+        for (let i = 0; i < n; i++) {
+            let str = "";
+            for (let j = 0; j < n - 1; j++) {
+                str = str + n + " ";
+            }
+            str += n;
+            result += str + "<br>";
+        }
+        document.getElementById("result").innerHTML = result;
+    }
+
+    function testPrintMatrix() {
+        var n = parseInt(document.getElementById("nInput").value);
+        printMatrix(n);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции getSoldItemsCount</title>
+</head>
+<body>
+<h1>Тестирование функции getSoldItemsCount</h1>
+<label for="array1Input">Введите первый массив пар "товар - количество продаж" через запятую:</label>
+<input type="text" id="array1Input" placeholder="Пример: товар1, 5, товар2, 10">
+<br>
+<label for="array2Input">Введите второй массив пар "товар - количество продаж" через запятую:</label>
+<input type="text" id="array2Input" placeholder="Пример: товар1, 3, товар3, 7">
+<br>
+<button onclick="testGetSoldItemsCount()">Получить количество на складе</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function getSoldItemsCount(array1, array2) {
+        let map = new Map();
+        for (let i = 0; i < array1.length; i += 2) {
+            map.set(array1[i], Number(array1[i+1]));
+        }
+        for (let i = 0; i < array2.length; i += 2) {
+            if (map.has(array2[i])) {
+                map.set(array2[i], map.get(array2[i]) + Number(array2[i+1]));
+            } else {
+                map.set(array2[i], Number(array2[i+1]));
+            }
+        }
+        var result = "";
+        map.forEach((v, k) => {
+            result += `${k} -> ${v}<br>`;
+        });
+        return result;
+    }
+
+    function testGetSoldItemsCount() {
+        var array1String = document.getElementById("array1Input").value;
+        var array2String = document.getElementById("array2Input").value;
+        var array1 = array1String.split(",").map(function(item) {
+            return item.trim();
+        });
+        var array2 = array2String.split(",").map(function(item) {
+            return item.trim();
+        });
+        var result = getSoldItemsCount(array1, array2);
+        document.getElementById("result").innerHTML = result;
+    }
+</script>
+</body>
+</html>

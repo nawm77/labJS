@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cities Coordinates</title>
+</head>
+<body>
+
+<h2>Enter City Data:</h2>
+<textarea id="cityInput" rows="4" cols="50"></textarea><br>
+<button onclick="parseCities()">Parse Cities</button>
+
+<h2>Parsed Cities:</h2>
+<div id="output"></div>
+
+<script>
+    class City {
+        constructor(name, latitude, longitude) {
+            this.name = name;
+            this.latitude = parseFloat(latitude).toFixed(2);
+            this.longitude = parseFloat(longitude).toFixed(2);
+        }
+
+        getInfo() {
+            return `{ town: '${this.name}', latitude: '${this.latitude}', longitude: '${this.longitude}' }`;
+        }
+    }
+
+    function parseCities() {
+        let input = document.getElementById("cityInput").value;
+        let citiesData = input.split("\n");
+        let cities = [];
+
+        citiesData.forEach(function(cityInfo) {
+            let [name, latitude, longitude] = cityInfo.split(" | ");
+            cities.push(new City(name, latitude, longitude));
+        });
+
+        let output = document.getElementById("output");
+        output.innerHTML = "";
+
+        cities.forEach(function(city) {
+            output.innerHTML += city.getInfo() + "<br>";
+        });
+    }
+</script>
+
+</body>
+</html>

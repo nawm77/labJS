@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции isLeap</title>
+</head>
+<body>
+<h1>Тестирование функции isLeap</h1>
+<label for="yearInput">Введите год:</label>
+<input type="number" id="yearInput">
+<br>
+<button onclick="testIsLeap()">Проверить</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function isLeap(year) {
+        return year % 4 === 0 && year % 100 !== 0 || year % 400 === 0 ? "yes" : "no";
+    }
+
+    function testIsLeap() {
+        var year = parseInt(document.getElementById("yearInput").value);
+        var result = isLeap(year);
+        document.getElementById("result").innerText = "Год високосный? " + result;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование функции findEqualsElements</title>
+</head>
+<body>
+<h1>Тестирование функции findEqualsElements</h1>
+<label for="array1Input">Введите первый массив чисел через запятую:</label>
+<input type="text" id="array1Input" placeholder="Пример: 1, 2, 3">
+<br>
+<label for="array2Input">Введите второй массив чисел через запятую:</label>
+<input type="text" id="array2Input" placeholder="Пример: 3, 4, 5">
+<br>
+<button onclick="testFindEqualsElements()">Найти одинаковые элементы</button>
+<br>
+<p id="result"></p>
+
+<script>
+    function findEqualsElements(array1, array2) {
+        let equals = [];
+        for (let i = 0; i < array1.length; i++) {
+            if(array2.includes(array1[i])) {
+                equals.push(array1[i]);
+            }
+        }
+        return equals;
+    }
+
+    function testFindEqualsElements() {
+        var array1String = document.getElementById("array1Input").value;
+        var array2String = document.getElementById("array2Input").value;
+        var array1 = array1String.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+        var array2 = array2String.split(",").map(function(item) {
+            return parseInt(item.trim(), 10);
+        });
+        var result = findEqualsElements(array1, array2);
+        document.getElementById("result").innerText = "Одинаковые элементы: " + result;
+    }
+</script>
+</body>
+</html>
