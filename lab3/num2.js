@@ -5,4 +5,4 @@ function findEqualsElements(array1, array2) {
         }
     }
 }
-findEqualsElements(["hello", "hey", "4"], ["hello", "4", "are"])
+findEqualsElements(["hello", "hey", 4], ["hello", "4", "are"])

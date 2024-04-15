@@ -1,13 +1,13 @@
 class Employee {
-    constructor(name, id) {
+    constructor(name) {
         this.name = name
-        this.id = id
+        this.id = name.length
     }
 
 }
 function defineEmployeeNumber(employeeArray) {
     for (let i = 0; i < employeeArray.length; i++) {
-        let employee = new Employee(employeeArray[i], employeeArray[i].length)
+        let employee = new Employee(employeeArray[i])
         console.log(`Name: ${employee.name} - Personal Number: ${employee.id}`)
     }
 }

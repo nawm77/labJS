@@ -1,4 +1,7 @@
 function round(num, acc) {
+    if (num.toString().split(".")[1].length > 15) {
+        return "Invalid number format"
+    }
     return Number(num.toFixed(acc));
 }
 

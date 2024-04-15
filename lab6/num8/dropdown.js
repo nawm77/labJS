@@ -5,5 +5,11 @@ function addItem() {
     let option = document.createElement('option');
     option.text = text;
     option.value = value;
-    select.appendChild(option);
+    const optionLabels = Array.from(select.options).map((opt) => opt.value);
+    const hasOption = optionLabels.includes(option.value);
+    if(!hasOption) {
+        select.appendChild(option);
+    } else {
+        console.log("Select already contains this option")
+    }
 }
